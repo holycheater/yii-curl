@@ -1,7 +1,8 @@
 <?php
 // vim: sw=4:ts=4:noet:sta:
+namespace Curl;
 
-class CurlException extends CException {
+class Exception extends \CException {
 	public $httpCode;
 
 	public $response;

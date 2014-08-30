@@ -1,12 +1,13 @@
 <?php
 // vim: sw=4:ts=4:noet:sta:
+namespace Curl;
 
 /**
  * Curl response object
  *
  * @property string $contentType
  */
-class CurlResponse extends CComponent {
+class Response extends \CComponent {
 	/**
 	 * @var integer http code
 	 */

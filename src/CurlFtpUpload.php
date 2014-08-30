@@ -1,7 +1,8 @@
 <?php
 // vim: sw=4:ts=4:noet:sta:
+namespace Curl;
 
-class CurlFtpUpload extends CurlRequest {
+class FtpUpload extends Request {
 	public $timeout = 30;
 
 	public $isPassive = false;

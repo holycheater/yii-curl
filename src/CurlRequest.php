@@ -1,10 +1,11 @@
 <?php
 // vim: sw=4:ts=4:noet:sta:
+namespace Curl;
 
 /**
  * Curl request
  */
-class CurlRequest {
+class Request {
 	public $url;
 
 	public $timeout = 2;
@@ -75,13 +76,13 @@ class CurlRequest {
 		$httpCode = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
 
 		if (curl_errno($this->ch) !== CURLE_OK) {
-			throw new CurlException(curl_error($this->ch), curl_errno($this->ch));
+			throw new Exception(curl_error($this->ch), curl_errno($this->ch));
 		}
 
-		$response = new CurlResponse($httpCode, $resultData, curl_getinfo($this->ch, CURLINFO_HEADER_SIZE));
+		$response = new Response($httpCode, $resultData, curl_getinfo($this->ch, CURLINFO_HEADER_SIZE));
 
 		if  ($httpCode >= 400) {
-			throw new CurlException("HTTP transfer error {$httpCode}", null, $httpCode, $response);
+			throw new Exception("HTTP transfer error {$httpCode}", null, $httpCode, $response);
 		}
 
 		curl_close($this->ch);
