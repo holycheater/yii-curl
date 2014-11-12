@@ -64,6 +64,7 @@ class Request {
 			CURLOPT_HEADER => true,
 			CURLOPT_RETURNTRANSFER => true,
 		]);
+		curl_setopt_array($this->ch, $this->extraOpts);
 
 		if ($this->username && $this->password) {
 			curl_setopt($this->ch, CURLOPT_USERPWD, "{$this->username}:{$this->password}");
