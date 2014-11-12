@@ -24,6 +24,7 @@ class Response extends \CComponent {
 	public $data = '';
 
 	public function __construct($httpCode, $response, $headerSize) {
+		$this->code = $httpCode;
 		$this->headers = $this->parseHeaders(substr($response, 0, $headerSize));
 		$this->data = substr($response, $headerSize);
 	}
