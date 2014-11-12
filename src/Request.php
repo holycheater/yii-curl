@@ -34,6 +34,8 @@ class Request {
 
 	protected $ch;
 
+	protected $extraOpts = [ ];
+
 	public function __construct($url = null) {
 		$this->url = $url;
 	}
@@ -96,6 +98,14 @@ class Request {
 	public function post($data) {
 		$this->requestType = 'POST';
 		$this->data = $data;
+		return $this->exec();
+	}
+
+	/**
+	 * send HEAD request
+	 */
+	public function head() {
+		$this->extraOpts[CURLOPT_NOBODY] = true;
 		return $this->exec();
 	}
 
