@@ -36,7 +36,7 @@ class CurlResponse extends CComponent {
 		unset($lines[0]);
 		$result = [ ];
 		foreach ($lines as $line) {
-			if (empty(trim($line)))
+			if (!trim($line))
 				continue;
 			list($k, $v) = explode(": ", $line);
 			$result[$k] = $v;
